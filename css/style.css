@@ -1,0 +1,248 @@
+h1, h2 {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+i {
+    font-weight: 900;
+}
+
+.hidden {
+    display: none;
+}
+
+:root {
+    --text-color: aliceblue;
+    --background-color: #263343;
+    --accent-color: #95cfff;
+    --icons-color: #55fac8;
+    --bodybackground-color: #dddddd;
+    --sectionbackground-color: #b9b4b4;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity : 0;
+    } to {
+        opacity : 1;
+    }
+}
+
+#popup-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+  
+#popup-wrap.hide {
+display: none;
+}
+
+#popup-wrap.has-filter {
+backdrop-filter: blur(4px);
+-webkit-backdrop-filter: blur(4px);
+}
+
+#popup {
+padding: 20px;
+background-color: rgb(235, 235, 235);
+border-radius: 6%;
+width: 25%;
+height: 22%;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+align-items: center;
+text-align: center;
+line-height: 30px;
+color: #263343;
+}
+
+.popup-btn {
+width: 50%;
+display: flex;
+justify-content: space-around;
+}
+
+.popup-btn button {
+border-radius: 10px;
+padding: 5px 20px;
+font-size: 1em;
+color: #263343;
+background-color: rgb(209, 209, 209);
+}
+
+#setting {
+position: absolute;
+top: 10px;
+right: 70px;
+height: 2rem;
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: transparent;
+border-style: none;
+color: var(--text-color);
+}
+ 
+#setting:hover {
+    background-color: var(--accent-color);
+    border-radius: 4px;
+}
+
+#bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: antiquewhite;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    animation: fadeIn 0.5s linear;
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#clock {
+    color:var(--text-color);
+    font-size: 4em;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+#login-form h2 {
+    color:var(--text-color);
+    text-align: center;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+#login-form input, #todo-form input {
+    width: 350px;
+    padding: 10px;
+    border-style: none;
+    background-color: transparent;
+    color: var(--text-color);
+    font-size: 1.2em;
+    border-bottom: solid 2px #eee;
+}
+
+#login-form input:focus, #todo-form input:focus {
+    outline: none;
+}
+
+#login-form input::placeholder, #todo-form input::placeholder {
+    color: rgb(255, 255, 255);
+}
+
+#greeting {
+    color: var(--text-color);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+#weather {
+    color: var(--text-color);
+    position: absolute;
+    top: 5%;
+    right: 5%;
+}
+
+#todo-list {
+    width: 40%;
+    margin: 2% auto;
+    background-color: rgba(240, 255, 255, 0.301);
+    border-radius: 4px;
+}
+
+#todo-list li button {
+    border-style: none;
+    background-color: transparent;
+}
+
+#todo-list li button i {
+    color: #222;
+}
+
+#quote {
+    position: absolute;
+    bottom: 5%;
+    color: var(--text-color);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* @media screen and (max-width: 800px) {
+    #popup-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+  
+    #popup-wrap.hide {
+      display: none;
+    }
+  
+    #popup-wrap.has-filter {
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+  
+    #popup {
+      padding: 20px;
+      background-color: var(--container-color);
+      border-radius: var(--border);
+      width: 40%;
+      height: 22%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      text-align: center;
+      line-height: 30px;
+      color: var(--text-color);
+      font-size: 15px;
+    }
+  
+    .popup-btn {
+      width: 20%;
+      display: flex;
+      justify-content: space-around;
+    }
+  
+    .popup-btn button {
+      border-radius: 10px;
+      padding: 5px 20px;
+      font-size: var(--h3-size);
+      color: var(--text-color);
+      background-color: var(--popup);
+    }
+  } */
