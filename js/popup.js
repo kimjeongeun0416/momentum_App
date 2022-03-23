@@ -27,7 +27,7 @@ function closePopup() {
 function userLogout() {
   localStorage.clear();
   // url 변경필요
-  location.replace("../index.html");
+  location.replace("momentum_App/index.html");
 }
 
 yesBtn.addEventListener("click", userLogout);
