@@ -17,31 +17,60 @@ function deleteToDo(event) {
   saveToDos();
 }
 
-function paintToDo(newTodo) {
+function completeToDo(event) {
+  const parent = event.target.parentNode;
+
+  toDos[toDos.findIndex((todo) => todo.id == parent.id)].complete = true;
+  paintComplete(parent);
+  saveToDos();
+}
+
+function paintComplete(parent) {
+  const text = parent.querySelector('span');
+  text.style.textDecorationLine = 'line-through';
+}
+
+function paintCancle(parent) {
+  const text = parent.querySelector('span');
+  text.style.textDecorationLine = 'none';
+}
+
+function paintToDo(text, completed) {
   const li = document.createElement("li");
-  li.id = newTodo.id;
   const span = document.createElement("span");
-  span.innerText = newTodo.text;
-  const button = document.createElement("button");
-  button.innerText = "➖";
-  //button.innerHTML = '<i class="fa-solid fa-minus"></i>';
-  button.addEventListener("click", deleteToDo);  
-  li.appendChild(button);
+  const delBtn = document.createElement("button");
+  const comBtn = document.createElement("button");
+  const newId = toDos.length + 1;
+
+  delBtn.innerText = "➖";
+  delBtn.addEventListener('click', deleteToDo);
+  comBtn.innerText = "✔";
+  comBtn.addEventListener('click', completeToDo);
+  span.innerText = text;
+
+  li.appendChild(comBtn);
+  li.appendChild(delBtn);
   li.appendChild(span);
+
+  li.id = newId;
   toDoList.appendChild(li);
+
+  const toDoObj = {
+    text: text,
+    id: newId,
+    complete: completed,
+  };
+  toDos.push(toDoObj);
+  saveToDos();
+  if ( completed ) {
+    comBtn.click();}
 }
 
 function handleToDoSubmit(event) {
   event.preventDefault();
-  const newTodo = toDoInput.value;
+  const currentValue = toDoInput.value;
+  paintToDo(currentValue);
   toDoInput.value = "";
-  const newTodoObj = {
-    text: newTodo,
-    id: Date.now(),
-  };
-  toDos.push(newTodoObj);
-  paintToDo(newTodoObj);
-  saveToDos();
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
@@ -51,5 +80,7 @@ const savedToDos = localStorage.getItem(TODOS_KEY);
 if (savedToDos !== null) {
   const parsedToDos = JSON.parse(savedToDos);
   toDos = parsedToDos;
-  parsedToDos.forEach(paintToDo);
+  parsedToDos.forEach(function(toDo) {
+    paintToDo(toDo.text, toDo.complete);
+  });
 }
